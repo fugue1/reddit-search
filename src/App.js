@@ -6,11 +6,11 @@ import axios from 'axios';
 import moment from 'moment';
 
 
-import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader, Responsive } from 'semantic-ui-react';
+import {Comment, Input, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader, Responsive } from 'semantic-ui-react';
 
 import Post from './Post.js'
 
-const DEFAULT_QUERY = 'Yang';
+const DEFAULT_QUERY = 'React';
 const DEFAULT_HPP = '100';
 
 const PATH_BASE = 'https://www.reddit.com';
@@ -131,16 +131,16 @@ class App extends Component {
         <Grid columns={2} stackable>
            <Grid.Column>
 
-               <Search
+               <Input action={<Button type="submit" onClick={this.onSearchSubmit} primary>Search</Button>}
                  value={searchTerm}
                  onChange={this.onSearchChange}
-                 onSubmit={this.onSearchSubmit}>
-                 Search
-               </Search>
+                 onSubmit={this.onSearchSubmit}
+
+                 />
 
            </Grid.Column>
            <Grid.Column>
-          
+
                <SortButton sorted_By={this.sorted_By} />
 
            </Grid.Column>

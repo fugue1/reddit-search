@@ -90,7 +90,7 @@ const GenCom = ({ item, moreReplies, moreRep, dispRep, hideRep, link, showReplie
 
         {
           ( showReplies &&
-        <Comment.Action onClick={() => hideRep() style={{cursor:'pointer'}}}>
+        <Comment.Action onClick={() => hideRep()} style={{cursor:'pointer'}}>
           Hide Replies
         </Comment.Action> )
         ||
