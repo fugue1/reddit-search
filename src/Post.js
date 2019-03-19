@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader } from 'semantic-ui-react';
+import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader, Responsive } from 'semantic-ui-react';
 
 import Commint from './Commint.js';
 import {ComGroup} from './ComGroup.js';
@@ -75,10 +75,10 @@ export class Post extends Component {
         {
         (  loadcomments && commints[1] &&
 
-          <Segment textAlign='left'>
+          <Responsive as={Segment} textAlign='left'>
           <Button onClick={() => this.hideCom()} compact primary>Hide Comments</Button>
           <ComGroup comms={commints[1].data.children} link={item.data.permalink} />
-          </Segment> )
+          </Responsive> )
 
           ||  (loadcomments && <Button compact>Loading Comments</Button>)
 

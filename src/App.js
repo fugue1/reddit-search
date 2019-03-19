@@ -6,7 +6,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 
-import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader } from 'semantic-ui-react';
+import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader, Responsive } from 'semantic-ui-react';
 
 import Post from './Post.js'
 
@@ -169,13 +169,13 @@ const SortButton = ({ sorted_By }) =>
 
 
 const EmbedList = ({ list  }) =>
-  <Segment>
+  <Responsive as={Segment}>
     <List divided>
       {list.map(item =>
         <Post key={item.data.id} item={item} />
       )}
       </List>
-    </Segment>
+    </Responsive>
 
 
   const Loading = () =>
