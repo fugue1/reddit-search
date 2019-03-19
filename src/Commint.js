@@ -25,16 +25,11 @@ export class Commint extends Component {
     this.state = {
       showReplies: false,
       anyReplies: false,
-      moreReplies: false,
-      moreDone: false,
-      more: null,
-
     };
 
     this.dispRep = this.dispRep.bind(this);
     this.hideRep = this.hideRep.bind(this);
-    this.moreRep = this.moreRep.bind(this);
-    this.addMore = this.addMore.bind(this);
+
   }
 
   componentDidMount() {
@@ -55,40 +50,10 @@ export class Commint extends Component {
     this.setState(state => ({showReplies: false}));
   }
 
-  addMore(moreids) {
-    this.setState( state =>
-    ({ more: moreids, moreDone: true }), () => console.log(this.state.more))
-  }
 
-  moreRep() {
-
-
-
-    this.setState(state => ({ moreReplies: true }) );
-
-      const num_ids = this.props.item.data.count;
-
-      const taken = Math.min(20, num_ids);
-
-      const rids = this.props.item.data.children.slice(0, taken);
-
-      const lids = this.props.item.data.children.slice(taken);
-
-      var more_ids = getIds(rids, this.props.link);
-
-      if ((num_ids > 20) && (more_ids.length == 20)) {
-
-        more_ids.push({ data:
-          {count: num_ids - 20, children: lids }});
-        };
-
-      this.addMore(more_ids);
-
-
-  }
 
   render() {
-    const { showReplies, anyReplies, moreReplies, moreDone, more } = this.state;
+    const { showReplies, anyReplies } = this.state;
     const { item, link } = this.props;
 
     return (
