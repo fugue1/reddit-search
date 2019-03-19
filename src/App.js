@@ -10,7 +10,7 @@ import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Gr
 
 import Post from './Post.js'
 
-const DEFAULT_QUERY = 'Trump';
+const DEFAULT_QUERY = 'Yang';
 const DEFAULT_HPP = '100';
 
 const PATH_BASE = 'https://www.reddit.com';

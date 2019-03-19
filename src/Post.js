@@ -60,7 +60,7 @@ export class Post extends Component {
           <Grid centered>
 
           <Grid.Row>
-          <Segment fluid='true' size='large'>
+          <Segment fluid='true'>
             <h2><a href={PATH_BASE + item.data.permalink}>{item.data.title}</a></h2>
 
             <Label>Author<Label.Detail> {item.data.author}</Label.Detail> </Label>
@@ -75,10 +75,10 @@ export class Post extends Component {
         {
         (  loadcomments && commints[1] &&
 
-          <Responsive as={Segment} textAlign='left'>
+          <Segment textAlign='left' compact>
           <Button onClick={() => this.hideCom()} compact primary>Hide Comments</Button>
           <ComGroup comms={commints[1].data.children} link={item.data.permalink} />
-          </Responsive> )
+          </Segment> )
 
           ||  (loadcomments && <Button compact>Loading Comments</Button>)
 
