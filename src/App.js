@@ -124,28 +124,28 @@ class App extends Component {
     return (
       <div className="page">
 
-      <Header as='h1' textAlign='center' block>
-        REDDIT SEARCH
-      </Header>
-      <Segment.Group horizontal>
-        <Segment>
-        <div className="interactions">
-          <Search
-            value={searchTerm}
-            onChange={this.onSearchChange}
-            onSubmit={this.onSearchSubmit}>
-            Search
-          </Search>
-        </div>
-        </Segment>
-        <Segment>
+        <Header as='h1' textAlign='center' block>
+          REDDIT SEARCH
+        </Header>
 
+        <Grid columns={2} stackable>
+           <Grid.Column>
 
-        <div className="interactions">
-          <SortButton sorted_By={this.sorted_By} />
-        </div>
-        </Segment>
-        </Segment.Group>
+               <Search
+                 value={searchTerm}
+                 onChange={this.onSearchChange}
+                 onSubmit={this.onSearchSubmit}>
+                 Search
+               </Search>
+
+           </Grid.Column>
+           <Grid.Column>
+          
+               <SortButton sorted_By={this.sorted_By} />
+
+           </Grid.Column>
+        </Grid>
+
 
           <EmbedList list={list} />
 
@@ -153,6 +153,28 @@ class App extends Component {
     );
   }
 }
+
+/*
+<Segment.Group horizontal>
+  <Segment>
+  <div className="interactions">
+    <Search
+      value={searchTerm}
+      onChange={this.onSearchChange}
+      onSubmit={this.onSearchSubmit}>
+      Search
+    </Search>
+  </div>
+  </Segment>
+  <Segment>
+
+
+  <div className="interactions">
+    <SortButton sorted_By={this.sorted_By} />
+  </div>
+  </Segment>
+  </Segment.Group>
+*/
 
 const SortButton = ({ sorted_By }) =>
 
