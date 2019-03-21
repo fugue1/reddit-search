@@ -122,11 +122,10 @@ export class Post extends Component {
 
 const SortCom = ({ sortCom, sortcomments }) =>
   <Button.Group size='tiny' compact>
-    <Label color='green' size='large' inline='centered'>
-    { (sortcomments && 'Sorting...')
-      || 'Sort By' }
-    </Label>
-
+    <Button color='green' style={{cursor:'text'}}>
+      { (sortcomments && 'Sorting...')
+        || 'Sort By' }
+    </Button>
     <Button onClick={() => sortCom('?sort=controversial')}> Controversial </Button>
     <Button.Or />
     <Button onClick={() => sortCom('')}> Score </Button>

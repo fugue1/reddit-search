@@ -154,10 +154,10 @@ class App extends Component {
 
 const SortButton = ({ sorted_By }) =>
 
-  <Button.Group size='large' >
-    <Label color='green' size='big'>
+  <Button.Group size='medium' >
+    <Button color='green' style={{cursor:'text'}}>
       Sort By
-    </Label>
+    </Button>
     <Button onClick={() => sorted_By('num_comments')}> Comments </Button>
     <Button.Or />
     <Button onClick={() => sorted_By('score')}> Votes </Button>
