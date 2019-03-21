@@ -90,12 +90,19 @@ export class Post extends Component {
 
         (  loadcomments && commints[1] &&
 
+
           <Segment textAlign='left' compact>
-          <Button onClick={() => this.hideCom()} compact primary>Hide Comments</Button>
+          <Grid columns={2} stackable>
+          <Grid.Column textAlign='center'>
+          <Button onClick={() => this.hideCom()} inline='centered' compact primary>Hide Comments</Button>
+          </Grid.Column>
+          <Grid.Column textAlign='center'>
           <SortCom sortCom={this.sortCom} sortcomments={sortcomments} />
+          </Grid.Column>
+          </Grid>
 
               <ComGroup comms={commints[1].data.children} link={item.data.permalink} />
-          
+
           </Segment> )
 
           ||  (loadcomments && <Button compact>Loading Comments</Button>)
@@ -114,7 +121,7 @@ export class Post extends Component {
 
 
 const SortCom = ({ sortCom, sortcomments }) =>
-  <Button.Group size='tiny' floated='right' compact>
+  <Button.Group size='tiny' compact>
     <Label color='green' size='large' inline='centered'>
     { (sortcomments && 'Sorting...')
       || 'Sort By' }

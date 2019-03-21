@@ -81,7 +81,7 @@ const GenCom = ({ item, dispRep, hideRep, link, showReplies, anyReplies }) =>
         ||
          ( anyReplies &&
            <Comment.Action onClick={() => dispRep()} style={{cursor:'pointer'}}>
-           {`${item.data.replies.data.children.length} Replies`}
+            <ReplyCase item={item} />
            </Comment.Action>)
            ||
             null
@@ -95,6 +95,15 @@ const GenCom = ({ item, dispRep, hideRep, link, showReplies, anyReplies }) =>
               }
   </Comment>
 
+
+const ReplyCase = ({ item }) => {
+  const num = item.data.replies.data.children.length;
+  if (num == 1) {
+    return `${num} Reply`
+  } else {
+    return `${num} Replies`
+  }
+}
 
 const ToHtml = ({str}) =>
  <div>{ReactHtmlParser(ReactHtmlParser(str))}</div>

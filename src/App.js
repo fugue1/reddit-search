@@ -10,11 +10,11 @@ import {Comment, Input, Dropdown, Container, Divider, Header, Button, Segment, L
 
 import Post from './Post.js'
 
-const DEFAULT_QUERY = 'React';
+const DEFAULT_QUERY = 'React.js';
 const DEFAULT_HPP = '100';
 
 const PATH_BASE = 'https://www.reddit.com';
-const PATH_SUB = '/r/news';
+const PATH_SUB = '';
 const PATH_SEARCH = '/search.json';
 const PARAM_SEARCH = 'q=';
 const PARAM_PAGE = 'page=';
@@ -128,7 +128,7 @@ class App extends Component {
         </Header>
 
         <Grid columns={2} stackable>
-           <Grid.Column>
+           <Grid.Column textAlign='center'>
 
                <Input action={<Button type="submit" onClick={this.onSearchSubmit} primary>Search</Button>}
                  value={searchTerm}
@@ -138,7 +138,7 @@ class App extends Component {
                  />
 
            </Grid.Column>
-           <Grid.Column>
+           <Grid.Column textAlign='center'>
 
                <SortButton sorted_By={this.sorted_By} />
 
