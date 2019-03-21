@@ -68,7 +68,6 @@ class App extends Component {
   }
 
   setSearchTopStories(result) {
-    // const { hits, page } = result;
     const { children, page } = result;
     const { searchKey, results } = this.state;
 
@@ -134,7 +133,7 @@ class App extends Component {
                <Input action={<Button type="submit" onClick={this.onSearchSubmit} primary>Search</Button>}
                  value={searchTerm}
                  onChange={this.onSearchChange}
-                 onSubmit={this.onSearchSubmit}
+              //   onSubmit={this.onSearchSubmit}
 
                  />
 
@@ -146,41 +145,18 @@ class App extends Component {
            </Grid.Column>
         </Grid>
 
-
           <EmbedList list={list} />
-
       </div>
     );
   }
 }
 
-/*
-<Segment.Group horizontal>
-  <Segment>
-  <div className="interactions">
-    <Search
-      value={searchTerm}
-      onChange={this.onSearchChange}
-      onSubmit={this.onSearchSubmit}>
-      Search
-    </Search>
-  </div>
-  </Segment>
-  <Segment>
-
-
-  <div className="interactions">
-    <SortButton sorted_By={this.sorted_By} />
-  </div>
-  </Segment>
-  </Segment.Group>
-*/
 
 const SortButton = ({ sorted_By }) =>
 
   <Button.Group size='large' >
     <Label color='green' size='big'>
-      Sort By:
+      Sort By
     </Label>
     <Button onClick={() => sorted_By('num_comments')}> Comments </Button>
     <Button.Or />

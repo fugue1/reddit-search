@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
-import {Comment, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader } from 'semantic-ui-react';
+import {Comment, Button, Segment } from 'semantic-ui-react';
 
 import Commint from './Commint.js';
 
@@ -59,8 +59,6 @@ export class ComGroup extends Component {
 
     addMore(moreids) {
 
-      console.log(moreids);
-
       this.setState(state => {
 
           const { dcomms } = state;
@@ -68,7 +66,8 @@ export class ComGroup extends Component {
 
 
          return { dcomms: update, moreReplies: false };
-    }, () => console.log(this.state.dcomms));
+    }
+    );
   }
 
 
@@ -89,6 +88,7 @@ export class ComGroup extends Component {
       return (
 
         <Comment.Group threaded>
+
           {dcomms && dcomms.map(item =>
             item && item.data &&
             (
