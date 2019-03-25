@@ -12,8 +12,11 @@
     "react-dom": "^16.8.4",
     "react-render-html": "^0.6.0",
     "react-scripts": "2.1.8",
+    "react-theme-switch": "^0.1.7",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.86.0"
+    "semantic-ui-forest-themes": "^1.0.3",
+    "semantic-ui-react": "^0.86.0",
+    "use-dark-mode": "^2.3.1"
   },
   "scripts": {
     "start": "react-scripts start",

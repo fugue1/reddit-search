@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 
-
 import axios from 'axios';
 import moment from 'moment';
+import useDarkMode from 'use-dark-mode';
+import ThemeSwitch from 'react-theme-switch';
 
 
 import {Comment, Input, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader, Responsive } from 'semantic-ui-react';
 
 import Post from './Post.js'
 
-const DEFAULT_QUERY = 'React.js';
+const DEFAULT_QUERY = 'javascript';
 const DEFAULT_HPP = '100';
 
 const PATH_BASE = 'https://www.reddit.com';
@@ -40,6 +41,7 @@ class App extends Component {
       searchTerm: DEFAULT_QUERY,
       embedded: false,
       error: null,
+      dark: false,
     };
 
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
@@ -111,7 +113,7 @@ class App extends Component {
   sorted_By = value => this.setState({sortKey: value});
 
   render() {
-    const { searchTerm, results, searchKey, error, isLoading, sortKey } = this.state;
+    const { searchTerm, results, searchKey, error, isLoading, sortKey, dark } = this.state;
     const page = (results && results[searchKey] && results[searchKey].page) || 0;
     const list1 = ( results && results[searchKey] && results[searchKey].children) || [];
     const options = [{text: 'votes', value: 'score'},
@@ -123,9 +125,19 @@ class App extends Component {
     return (
       <div className="page">
 
-        <Header as='h1' textAlign='center' block>
-          REDDIT SEARCH
+        <Header textAlign='center' block>
+
+
+          <Header as='h1' textAlign='center'>
+            REDDIT SEARCH
+          </Header>
+
+            designed by Chase Saucier
+
+
         </Header>
+
+
 
         <Grid columns={2} stackable>
            <Grid.Column textAlign='center'>
@@ -143,6 +155,8 @@ class App extends Component {
                <SortButton sorted_By={this.sorted_By} />
 
            </Grid.Column>
+
+      
         </Grid>
 
           <EmbedList list={list} />
@@ -150,6 +164,8 @@ class App extends Component {
     );
   }
 }
+
+
 
 
 const SortButton = ({ sorted_By }) =>
@@ -165,6 +181,40 @@ const SortButton = ({ sorted_By }) =>
     <Button onClick={() => sorted_By('created')}> Date </Button>
   </Button.Group>
 
+
+
+  const DarkButton = ({}) => {
+    const darkMode = useDarkMode(false);
+
+    return (
+  <Button.Group size='medium' >
+
+    <Button onClick={() => darkMode.enable()}> Dark </Button>
+    <Button.Or />
+    <Button onClick={() => darkMode.disable()}> Light </Button>
+
+  </Button.Group>
+    )
+  }
+
+/*
+  const DarkModeToggle = () => {
+    const darkMode = useDarkMode(false);
+
+    return (
+      <div>
+        <button type="button" onClick={darkMode.disable}>
+          ☀
+        </button>
+        <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
+        <button type="button" onClick={darkMode.enable}>
+          ☾
+        </button>
+      </div>
+    );
+  };
+
+  */
 
 const EmbedList = ({ list  }) =>
   <Responsive as={Segment}>

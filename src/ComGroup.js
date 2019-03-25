@@ -10,15 +10,11 @@ import Commint from './Commint.js';
 const PATH_BASE = 'https://www.reddit.com';
 
 function addExtra(arr, lids, num) {
-
   if (arr.length == 20) {
-
     arr.push({ data:
       {count: num - 20, children: lids }});
     };
-
   return arr;
-
 }
 
 export class ComGroup extends Component {
@@ -42,13 +38,9 @@ export class ComGroup extends Component {
   get_Ids(item, link) {
 
     const num_ids = item.data.count;
-
     const taken = Math.min(20, num_ids);
-
     const ids = item.data.children;
-
     const rids = ids.slice(0, taken);
-
     const lids = ids.slice(taken);
 
     axios.all(rids.map(rid => axios(`${PATH_BASE}${link}${rid}.json`)))
@@ -64,7 +56,6 @@ export class ComGroup extends Component {
           const { dcomms } = state;
           const update = [ ...dcomms.slice(0,-1), ...moreids ];
 
-
          return { dcomms: update, moreReplies: false };
     }
     );
@@ -74,9 +65,7 @@ export class ComGroup extends Component {
     moreRep(item) {
 
       this.setState(state => ({ moreReplies: true }) );
-
       this.get_Ids(item, this.props.link);
-
     }
 
     render() {
@@ -84,11 +73,8 @@ export class ComGroup extends Component {
       const { comms, link } = this.props;
       const { dcomms, moreReplies } = this.state;
 
-
       return (
-
         <Comment.Group threaded>
-
           {dcomms && dcomms.map(item =>
             item && item.data &&
             (
@@ -97,18 +83,14 @@ export class ComGroup extends Component {
               <Commint key={item.data.name} item={item} link={link} />
             )
           )}
-
         </Comment.Group>
-
       );
     }
-
   }
 
 
 
 const MoreRep = ({ item, moreRep, moreReplies, link }) =>
-
     <Segment>
       <Comment>
         <Comment.Content>

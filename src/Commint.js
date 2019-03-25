@@ -12,6 +12,8 @@ import { ComGroup } from './ComGroup.js';
 
 const PATH_BASE = 'https://www.reddit.com';
 
+const HIDE = '   Hide Comments';
+
 
 
 export class Commint extends Component {
@@ -48,16 +50,12 @@ export class Commint extends Component {
     this.setState(state => ({showReplies: false}));
   }
 
-
-
   render() {
     const { showReplies, anyReplies } = this.state;
     const { item, link } = this.props;
 
     return (
-
   <GenCom item={item} dispRep={this.dispRep} hideRep={this.hideRep} link={link} showReplies={showReplies} anyReplies={anyReplies} />
-
     );
   }
 }
@@ -77,7 +75,8 @@ const GenCom = ({ item, dispRep, hideRep, link, showReplies, anyReplies }) =>
           ( showReplies &&
         <Comment.Action onClick={() => hideRep()} style={{cursor:'pointer'}}>
           Hide Replies
-        </Comment.Action> )
+        </Comment.Action>
+                          )
         ||
          ( anyReplies &&
            <Comment.Action onClick={() => dispRep()} style={{cursor:'pointer'}}>
@@ -95,6 +94,11 @@ const GenCom = ({ item, dispRep, hideRep, link, showReplies, anyReplies }) =>
               }
   </Comment>
 
+
+const HideReplies = () => {
+  const spc = '     '
+  return `${spc} Hide Replies`
+}
 
 const ReplyCase = ({ item }) => {
   const num = item.data.replies.data.children.length;

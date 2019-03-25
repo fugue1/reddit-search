@@ -65,14 +65,14 @@ export class Post extends Component {
 
     return (
 
-      <Segment key={item.data.id} color='blue' raised>
+      <Segment color='blue' raised>
       <List.Item >
         <List.Content>
           <List.Header>
           <Grid centered>
 
           <Grid.Row>
-          <Segment fluid='true'>
+          <Segment color='orange' fluid='true'>
             <h2><a href={PATH_BASE + item.data.permalink}>{item.data.title}</a></h2>
 
             <Label>Author<Label.Detail> {item.data.author}</Label.Detail> </Label>
@@ -134,10 +134,7 @@ const SortCom = ({ sortCom, sortcomments }) =>
   </Button.Group>
 
 
-
 const valid_date = date =>
   ( (moment.unix(date).isValid() && moment.unix(date).format('MMMM Do YYYY, h:mm:ss a').toString() ) || "Bad Date")
-
-
 
 export default Post;
