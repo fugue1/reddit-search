@@ -93,7 +93,7 @@ export class Post extends Component {
         (  loadcomments && commints[1] &&
 
 
-          <Segment textAlign='left' compact>
+          <Responsive as={Segment} textAlign='left' fluid='true'>
           <Grid columns={2} stackable>
           <Grid.Column textAlign='center'>
           <Button onClick={() => this.hideCom()} inline='centered' compact primary>Hide Comments</Button>
@@ -103,9 +103,17 @@ export class Post extends Component {
           </Grid.Column>
           </Grid>
 
+          <Grid columns={1}>
+
+          <Grid.Column>
+            <Grid.Row>
               <ComGroup comms={commints[1].data.children} link={item.data.permalink} />
 
-          </Segment> )
+            </Grid.Row>
+          </Grid.Column>
+          </Grid>
+
+          </Responsive> )
 
           ||  (loadcomments && <Button compact>Loading Comments</Button>)
 
