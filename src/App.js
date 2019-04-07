@@ -93,7 +93,8 @@ class App extends Component {
   fetchSearchTopStories(searchTerm, page = 0) {
     this.setState({ isLoading: true });
 
-    axios(`${PATH_BASE}${PATH_SUB}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_HPP}${DEFAULT_HPP}`)
+   axios(`${PATH_BASE}${PATH_SUB}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_HPP}${DEFAULT_HPP}`)
+  //  axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(result => this.setSearchTopStories(result.data.data))
       .catch(error => this.setState({ error }));
   }
@@ -156,17 +157,22 @@ class App extends Component {
 
            </Grid.Column>
 
-      
+
         </Grid>
 
           <EmbedList list={list} />
+
+
       </div>
     );
   }
 }
 
 
-
+const MoreArt = ({ isLoading, page, searchKey, fetchSearchTopStories }) =>
+  <ButtonWithLoading isLoading={isLoading} onClick={() =>fetchSearchTopStories(searchKey, page + 1)}>
+    Load More Articles
+  </ButtonWithLoading>
 
 const SortButton = ({ sorted_By }) =>
 

@@ -69,9 +69,11 @@ export class Post extends Component {
       <List.Item >
         <List.Content>
           <List.Header>
-          <Grid centered>
+          <Grid columns={1}>
 
-          <Grid.Row>
+          <Grid.Column textAlign='center'>
+
+          <Grid.Row >
           <Segment color='orange' fluid='true'>
             <h2><a href={PATH_BASE + item.data.permalink}>{item.data.title}</a></h2>
 
@@ -110,6 +112,9 @@ export class Post extends Component {
               || <Button onClick={() => this.loadCom()} primary compact>Embed Comments</Button>
         }
           </Grid.Row>
+
+          </Grid.Column>
+
           </Grid>
           </List.Header>
         </List.Content>
