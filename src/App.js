@@ -160,8 +160,10 @@ class App extends Component {
 
         </Grid>
 
-          <EmbedList list={list} />
-
+          {
+            (isLoading && <Segment padded><Loader content='Loading Results...' active inline='centered'/> </Segment>)
+            || <EmbedList list={list} />
+          }
 
       </div>
     );
