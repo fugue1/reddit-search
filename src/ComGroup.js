@@ -34,9 +34,7 @@ export class ComGroup extends Component {
 
   }
 
-
   get_Ids(item, link) {
-
     const num_ids = item.data.count;
     const taken = Math.min(20, num_ids);
     const ids = item.data.children;
@@ -45,49 +43,43 @@ export class ComGroup extends Component {
 
     axios.all(rids.map(rid => axios(`${PATH_BASE}${link}${rid}.json`)))
         .then(results => this.addMore(addExtra(results.map(result => result.data[1].data.children[0]), lids, num_ids)));
-
     }
 
 
     addMore(moreids) {
-
       this.setState(state => {
-
           const { dcomms } = state;
           const update = [ ...dcomms.slice(0,-1), ...moreids ];
-
          return { dcomms: update, moreReplies: false };
     }
     );
   }
 
-
     moreRep(item) {
-
       this.setState(state => ({ moreReplies: true }) );
       this.get_Ids(item, this.props.link);
     }
 
     render() {
-
       const { comms, link } = this.props;
       const { dcomms, moreReplies } = this.state;
 
       return (
         <Comment.Group threaded>
-          {dcomms && dcomms.map(item =>
+          {
+            dcomms && dcomms.map(item =>
             item && item.data &&
             (
             (item.data.count && <MoreRep key={item.data.id} item={item} moreRep={this.moreRep} moreReplies={moreReplies} link={link} />)
             ||
               <Commint key={item.data.name} item={item} link={link} />
             )
-          )}
+          )
+          }
         </Comment.Group>
       );
     }
   }
-
 
 
 const MoreRep = ({ item, moreRep, moreReplies, link }) =>
@@ -104,10 +96,3 @@ const MoreRep = ({ item, moreRep, moreReplies, link }) =>
         </Comment.Content>
       </Comment>
     </Segment>
-
-
-    /*
-      componentDidMount() {
-        this.setState(state => ({ dcomms: this.props.comms}), () => console.log(this.state.dcomms));
-      }
-  */

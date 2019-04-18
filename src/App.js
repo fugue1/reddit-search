@@ -3,9 +3,6 @@ import './App.css';
 
 import axios from 'axios';
 import moment from 'moment';
-import useDarkMode from 'use-dark-mode';
-import ThemeSwitch from 'react-theme-switch';
-
 
 import {Comment, Input, Dropdown, Container, Divider, Header, Button, Segment, List, Grid, Label, Loader, Responsive } from 'semantic-ui-react';
 
@@ -94,7 +91,6 @@ class App extends Component {
     this.setState({ isLoading: true });
 
    axios(`${PATH_BASE}${PATH_SUB}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_HPP}${DEFAULT_HPP}`)
-  //  axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(result => this.setSearchTopStories(result.data.data))
       .catch(error => this.setState({ error }));
   }
@@ -127,44 +123,29 @@ class App extends Component {
       <div className="page">
 
         <Header textAlign='center' block>
-
-
           <Header as='h1' textAlign='center'>
             REDDIT SEARCH
           </Header>
-
             designed by Chase Saucier
-
-
         </Header>
-
-
 
         <Grid columns={2} stackable>
            <Grid.Column textAlign='center'>
-
                <Input action={<Button type="submit" onClick={this.onSearchSubmit} primary>Search</Button>}
                  value={searchTerm}
                  onChange={this.onSearchChange}
-              //   onSubmit={this.onSearchSubmit}
-
                  />
-
            </Grid.Column>
            <Grid.Column textAlign='center'>
 
                <SortButton sorted_By={this.sorted_By} />
 
            </Grid.Column>
-
-
         </Grid>
-
           {
             (isLoading && <Segment padded><Loader content='Loading Results...' active inline='centered'/> </Segment>)
             || <EmbedList list={list} />
           }
-
       </div>
     );
   }
@@ -177,7 +158,6 @@ const MoreArt = ({ isLoading, page, searchKey, fetchSearchTopStories }) =>
   </ButtonWithLoading>
 
 const SortButton = ({ sorted_By }) =>
-
   <Button.Group size='medium' >
     <Button color='green' style={{cursor:'text'}}>
       Sort By
@@ -190,39 +170,6 @@ const SortButton = ({ sorted_By }) =>
   </Button.Group>
 
 
-
-  const DarkButton = ({}) => {
-    const darkMode = useDarkMode(false);
-
-    return (
-  <Button.Group size='medium' >
-
-    <Button onClick={() => darkMode.enable()}> Dark </Button>
-    <Button.Or />
-    <Button onClick={() => darkMode.disable()}> Light </Button>
-
-  </Button.Group>
-    )
-  }
-
-/*
-  const DarkModeToggle = () => {
-    const darkMode = useDarkMode(false);
-
-    return (
-      <div>
-        <button type="button" onClick={darkMode.disable}>
-          ☀
-        </button>
-        <Toggle checked={darkMode.value} onChange={darkMode.toggle} />
-        <button type="button" onClick={darkMode.enable}>
-          ☾
-        </button>
-      </div>
-    );
-  };
-
-  */
 
 const EmbedList = ({ list  }) =>
   <Responsive as={Segment}>

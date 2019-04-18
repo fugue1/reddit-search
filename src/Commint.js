@@ -12,9 +12,6 @@ import { ComGroup } from './ComGroup.js';
 
 const PATH_BASE = 'https://www.reddit.com';
 
-const HIDE = '   Hide Comments';
-
-
 
 export class Commint extends Component {
   _isMounted = false;
@@ -94,11 +91,6 @@ const GenCom = ({ item, dispRep, hideRep, link, showReplies, anyReplies }) =>
               }
   </Comment>
 
-
-const HideReplies = () => {
-  const spc = '     '
-  return `${spc} Hide Replies`
-}
 
 const ReplyCase = ({ item }) => {
   const num = item.data.replies.data.children.length;
